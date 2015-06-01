@@ -1,23 +1,27 @@
 #ifndef _LEAGUEENUMS_
 #define _LEAGUEENUMS_
 
+#include "string"
+
 namespace LeagueEnums{
     enum League{
-        bronze = 6;
-        silver = 5;
-        gold = 4;
-        platinum = 3;
-        diamond = 2;
-        masters = 1;
-        challenger = 0;
+        unranked = 35,//when doing rank math this should be 35*1 versus 7*5
+        bronze = 6,
+        silver = 5,
+        gold = 4,
+        platinum = 3,
+        diamond = 2,
+        masters = 1,
+        challenger = 0
     };
     
     enum Role{
-        top = 0;
-        jungle = 1;
-        mid = 2;
-        marksman = 3;
-        support = 4;
+        top = 0,
+        jungle = 1,
+        mid = 2,
+        marksman = 3,
+        support = 4,
+        noroll = 5
     };
 
 }

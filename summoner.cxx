@@ -1,13 +1,14 @@
 #include "summoner.h"
 #include "leagueEnum.h"
+#include "string"
 
 Summoner::Summoner():
 sname("Default"), 
 pname("Default"), 
-league(), 
+league(LeagueEnums::unranked), 
 division(1), 
-primaryRole(0),
-secndryRole(0)
+primaryRole(LeagueEnums::noroll),
+secndryRole(LeagueEnums::noroll)
 {}
 
 void Summoner::setSummonerName(const std::string& name){
@@ -54,10 +55,10 @@ int Summoner::getRank() const{
     return division*league;
 }
 
-LeagueEnums::Role getPrimaryRole() const{
+LeagueEnums::Role Summoner::getPrimaryRole() const{
     return primaryRole;
 }
 
-LeagueEnums::Role getSecndryRole() const{
+LeagueEnums::Role Summoner::getSecndryRole() const{
     return secndryRole;
 }

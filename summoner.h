@@ -3,6 +3,7 @@
 
 
 #include "leagueEnum.h" 
+#include "string"
 
 class Summoner{
 public:
@@ -41,12 +42,6 @@ private:
     
     LeagueEnums::Role primaryRole;
     LeagueEnums::Role secndryRole;
-    
-    
-    
-    
-
-
 };
 
 

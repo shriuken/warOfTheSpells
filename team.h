@@ -4,18 +4,20 @@
 #include "summoner.h"
 #include "leagueEnum.h"
 
+#include "map"
+
 class Team{
 public:
     Team();
     
-    void addMember(Summoner* player, const std::string role);
-    void removeMember(const std::string role); 
+    void addMember(Summoner* player, const LeagueEnums::Role role);
+    void removeMember(const LeagueEnums::Role role); 
     
-    int getRoleRank(const std::string role) const;
+    int getRoleRank(LeagueEnums::Role role);
     int getTeamRank() const;
     
 private:
-    std::map<std::string, Summoner*> players;
+    std::map<LeagueEnums::Role, Summoner*> players;
 };
 
 
