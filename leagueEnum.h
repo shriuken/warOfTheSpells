@@ -1,8 +1,6 @@
 #ifndef _LEAGUEENUMS_
 #define _LEAGUEENUMS_
 
-#include "string"
-
 namespace LeagueEnums{
     enum League{
         unranked = 35,//when doing rank math this should be 35*1 versus 7*5
