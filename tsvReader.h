@@ -4,16 +4,16 @@
 #include "string"
 #include "vector"
 
-class TSVReader{
+class tsvReader{
 public:
-    TSVReader();
+    tsvReader();
     
-    readTSV(std::string filename);
+    std::vector<std::vector<std::string>> readTsv(std::string filename);
     
 private:
     std::vector<std::vector<std::string>> rows;
 
-}
+};
 
 
 #endif
