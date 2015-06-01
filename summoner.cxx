@@ -52,7 +52,7 @@ int Summoner::getDivision() const{
 }
 
 int Summoner::getRank() const{
-    return division*league;
+  return league*5 - (5 - division);
 }
 
 LeagueEnums::Role Summoner::getPrimaryRole() const{

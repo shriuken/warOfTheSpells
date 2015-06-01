@@ -6,7 +6,7 @@
 
 namespace LeagueEnums{
     enum League{
-        unranked = 35,//when doing rank math this should be 35*1 versus 7*5
+        unranked = 25,//when doing rank math this should be 35*1 versus 7*5
         bronze = 6,
         silver = 5,
         gold = 4,
