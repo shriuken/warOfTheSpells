@@ -1,6 +1,7 @@
 #include "summoner.h"
 #include "leagueEnum.h"
 #include "string"
+#include "iostream"
 
 Summoner::Summoner():
 sname("Default"), 
@@ -52,13 +53,15 @@ int Summoner::getDivision() const{
 }
 
 int Summoner::getRank() const{
-    if (league == LeagueEnums::unranked or 
-        league == LeagueEnums::masters or
-        league == LeagueEnums::challenger)
-    {
+    //std::cout<<league<<std::endl;
+    if (league == LeagueEnums::unranked or
+        league == LeagueEnums::masters or 
+        league == LeagueEnums::challenger){
         return league;
     }
-    return league*5 - (5 - division);
+    else{
+        return league*5 - (5 - division);
+    }
 }
 
 LeagueEnums::Role Summoner::getPrimaryRole() const{

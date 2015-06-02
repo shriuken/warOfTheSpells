@@ -7,6 +7,9 @@
 #include "set"
 #include "team.h"
 
+//g++ -std=c++11 summoner.cxx team.cxx tsvReader.cxx main.cpp
+
+
 void createMappings(std::map<std::string, LeagueEnums::League> &lmap, 
                    std::map<std::string, LeagueEnums::Role> &rmap, 
                    std::map<std::string, int> &dmap){
@@ -140,7 +143,7 @@ int main(int argc, char* argv []){
             if (summoners[index]->getPrimaryRole() == LeagueEnums::marksman){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::marksman);
                     indexUsed.insert(index);
                     index++;  
@@ -162,7 +165,7 @@ int main(int argc, char* argv []){
             if (summoners[index]->getSecndryRole() == LeagueEnums::marksman){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::marksman);
                     indexUsed.insert(index);
                     index++;  
@@ -176,7 +179,7 @@ int main(int argc, char* argv []){
     lastTeamAdded = 0;
     
     //add supports
-    std::cout<<"Support Numbers: " << suppMain.size()<<std::endl;
+    //std::cout<<"Support Numbers: " << suppMain.size()<<std::endl;
     for (int x = 0; x < numTeams; x++){
         int index = 0;
         int numUsed = indexUsed.size();
@@ -186,7 +189,7 @@ int main(int argc, char* argv []){
             if (summoners[index]->getPrimaryRole() == LeagueEnums::support){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::support);
                     indexUsed.insert(index);
                     index++;
@@ -198,7 +201,7 @@ int main(int argc, char* argv []){
         }
     }
     //secondary supports
-    std::cout<<"lastTeamAdded: " << lastTeamAdded << std::endl;
+    //std::cout<<"lastTeamAdded: " << lastTeamAdded << std::endl;
     for (int x = lastTeamAdded; x < numTeams; x++){
         int index = 0;
         int numUsed = indexUsed.size();
@@ -208,7 +211,7 @@ int main(int argc, char* argv []){
             if (summoners[index]->getSecndryRole() == LeagueEnums::support){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::support);
                     indexUsed.insert(index);
                     index++;  
@@ -253,7 +256,7 @@ int main(int argc, char* argv []){
             if (summoners[index]->getSecndryRole() == LeagueEnums::mid){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::mid);
                     indexUsed.insert(index);
                     index++;  
@@ -296,7 +299,7 @@ int main(int argc, char* argv []){
             if (summoners[index]->getSecndryRole() == LeagueEnums::jungle){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::jungle);
                     indexUsed.insert(index);
                     index++;  
@@ -339,10 +342,10 @@ int main(int argc, char* argv []){
             if (summoners[index]->getSecndryRole() == LeagueEnums::top){
                 //std::cout<<"Match found!"<<std::endl;
                 if (indexUsed.count(index) == 0){
-                    std::cout<<"Add add member if statement." << std::endl;
+                    //std::cout<<"Add add member if statement." << std::endl;
                     teams[x]->addMember(summoners[index], LeagueEnums::top);
                     indexUsed.insert(index);
-                    index++;  
+                    index++; 
                     lastTeamAdded = x;
                     break;
                 }
@@ -359,6 +362,12 @@ int main(int argc, char* argv []){
         teams[x]->print();
     }
     
+    //std::cout<<"team4 mid rank:"<<teams[4]->getRoleRank(LeagueEnums::mid)<<std::endl;
+    
+    /*std::cout<<"Unranked: " << LeagueEnums::unranked<<std::endl;
+    std::cout<<"Silver: " << LeagueEnums::silver<<std::endl;
+    std::cout<<"Platinum: " << LeagueEnums::platinum<<std::endl;
+    */
     //TODO:  Add logic for sorting and creating teams. 
     //       Add garbage collection for program.   
     return 1;

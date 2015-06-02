@@ -30,12 +30,10 @@ int Team::getTeamRank() const{
 }
 
 void Team::print() const{
-    std::cout<< "Team Start:"<<std::endl;
-    //std::cout<<"Team Rank:" << this->getTeamRank() << std::endl;
+    //std::cout<< "Team Start:"<<std::endl;
     for (auto &kv:players){
-        std::cout<<kv.second->getSummonerName()<< ", "
-            <<kv.first<<", "
-            <<kv.second->getRank()<<std::endl;
+        std::cout<<kv.second->getSummonerName()<< ", ";
     }
-    std::cout<<"Team End."<<std::endl;
+    std::cout<<"\nTeam Rank: "<<getTeamRank() << std::endl;
+    //std::cout<<"Team End."<<std::endl;
 }
