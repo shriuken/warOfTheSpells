@@ -24,10 +24,6 @@ namespace LeagueEnums{
         support = 4,
         noroll = 5
     };
-
-    
-    std::map<std::string, LeagueEnums::Role> roleMapping;
-
 }
 
 #endif
