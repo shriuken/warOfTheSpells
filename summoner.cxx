@@ -27,11 +27,11 @@ void Summoner::setDivision(const int div){
     division = div;
 }
 
-void Summoner::setPrimaryRole(const LeagueEnums::Role prim){
+void Summoner::setPrimaryRole(LeagueEnums::Role prim){
     primaryRole = prim;
 }
 
-void Summoner::setSecndryRole(const LeagueEnums::Role scnd){
+void Summoner::setSecndryRole(LeagueEnums::Role scnd){
     secndryRole = scnd;
 }
 
@@ -52,7 +52,13 @@ int Summoner::getDivision() const{
 }
 
 int Summoner::getRank() const{
-  return league*5 - (5 - division);
+    if (league == LeagueEnums::unranked or 
+        league == LeagueEnums::masters or
+        league == LeagueEnums::challenger)
+    {
+        return league;
+    }
+    return league*5 - (5 - division);
 }
 
 LeagueEnums::Role Summoner::getPrimaryRole() const{

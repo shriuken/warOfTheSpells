@@ -17,8 +17,8 @@ public:
     void setLeague(const LeagueEnums::League newLeague);
     void setDivision(const int div);
     
-    void setPrimaryRole(const LeagueEnums::Role prim);
-    void setSecndryRole(const LeagueEnums::Role scnd);
+    void setPrimaryRole(LeagueEnums::Role prim);
+    void setSecndryRole(LeagueEnums::Role scnd);
     
     //get private data members
     std::string getSummonerName() const;
