@@ -1,12 +1,14 @@
-from leagueTeamGenerator.league_gen_py.riot_api_wrapper import RiotAPI
-from leagueTeamGenerator.league_gen_py import key
+from riot_api_wrapper import RiotAPI as RiotAPI
+import key as key
 
 __author__ = 'ryan'
 
 
 def main():
-    api = RiotAPI(key.KEY)
-    r = api.get_summoner_by_name('shriuken154')
+    api = RiotAPI.RiotAPI(key.KEY)
+    # r = api.get_summoner_by_name('shriuken154')
+    # r = api.get_champion_by_id(266)
+    r = api.get_champion_by_id('266')
     print r
 
 

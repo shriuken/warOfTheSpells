@@ -1,6 +1,6 @@
 import requests
 
-from leagueTeamGenerator.league_gen_py.riot_api_wrapper import RiotConstants as Consts
+import RiotConstants as Consts
 
 __author__ = 'ryan'
 # following tutorial https://www.youtube.com/watch?v=0NycEiHOeX8
@@ -32,6 +32,19 @@ class RiotAPI:
         # probably should check for status codes here.
         print response.url
         return response.json()
+
+    def get_champions(self):
+        api_url = Consts.URL['champions'].format(
+            version=Consts.API_VERSIONS['champion']
+        )
+        return self._request(api_url)
+
+    def get_champion_by_id(self, champ_id):
+        api_url = Consts.URL['champion_by_id_champion'].format(
+            version=Consts.API_VERSIONS['champion'],
+            id=champ_id
+        )
+        return self._request(api_url)
 
     def get_summoner_by_name(self, name):
         api_url = Consts.URL['summoner_by_name'].format(
