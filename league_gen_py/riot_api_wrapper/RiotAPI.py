@@ -15,7 +15,7 @@ class RiotAPI:
         """
         :param api_url: the http command to execute
         :param params:
-        :return: the json response of the http command.
+        :return: the json response of the http command. OR 'error' if not found.
         """
         args = {'api_key': self.api_key}
         for key, value in params.items():
@@ -30,8 +30,10 @@ class RiotAPI:
             params=args
         )
         # probably should check for status codes here.
-        print response.url
-        return response.json()
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return 'error'
 
     def get_champions(self):
         api_url = Consts.URL['champions'].format(
