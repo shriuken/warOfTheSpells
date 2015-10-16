@@ -29,7 +29,6 @@ class RiotAPI:
             ),
             params=args
         )
-        # probably should check for status codes here.
         if response.status_code == 200:
             return response.json()
         else:
