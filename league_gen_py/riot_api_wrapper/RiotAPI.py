@@ -34,6 +34,28 @@ class RiotAPI:
         else:
             return 'error'
 
+    def _static_data_request(self, api_url, params={}):
+        """
+        :param api_url: the http command to execute
+        :param params:
+        :return: the json response of the http command. OR 'error' if not found.
+        """
+        args = {'api_key': self.api_key}
+        for key, value in params.items():
+            if key not in args:
+                args[key] = value
+        response = requests.get(
+            Consts.URL['static_data_base'].format(
+                region=self.region,
+                url=api_url
+            ),
+            params=args
+        )
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return 'error'
+
     def get_champions(self):
         api_url = Consts.URL['champions'].format(
             version=Consts.API_VERSIONS['champion']
@@ -175,21 +197,28 @@ class RiotAPI:
 
     def get_summoner_runes(self, summoner_ids):
         api_url = Consts.URL['summoner_runes'].format(
-            version=Consts.URL['summoner'],
+            version=Consts.API_VERSIONS['summoner'],
             summonerIds=summoner_ids
         )
         return self._request(api_url)
 
     def get_team_by_summoner_ids(self, summoner_ids):
         api_url = Consts.URL['team_by_summoner_ids'].format(
-            version=Consts.URL['team'],
+            version=Consts.API_VERSIONS['team'],
             summonerIds=summoner_ids
         )
         return self._request(api_url)
 
     def get_team_by_team_ids(self, team_ids):
         api_url = Consts.URL['team_by_team_ids'].format(
-            version=Consts.URL['team'],
+            version=Consts.API_VERSIONS['team'],
             teamIds=team_ids
         )
         return self._request(api_url)
+
+    def get_champion_list(self, args = ''):
+        api_url = Consts.URL['champion_list'].format(
+            version=Consts.API_VERSIONS['lol-static-data']
+        )
+        champData={'champData': args}
+        return self._static_data_request(api_url, champData)

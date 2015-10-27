@@ -3,6 +3,7 @@ __author__ = 'ryan'
 
 URL = {
     'base': 'https://{proxy}.api.pvp.net/api/lol/{region}/{url}',
+    'static_data_base': 'https://global.api.pvp.net/api/lol/static-data/{region}/{url}',
     'champions': 'v{version}/champion',  # Retrieves all champions
     'champion_by_id_champion': 'v{version}/champion/{id}',  # Retrieve champion by id
     'current_game': 'observer-mode/rest/consumer/getSpectatorGameInfo/{platformId}/{summonerId}',  # Game info by id
@@ -14,21 +15,21 @@ URL = {
     'league_entries_by_team_ids': 'v{version}/league/{teamIds}/entry',  # Get league entries by team ids
     'challenger': 'v{version}/league/challenger',  # Get challenger tier leagues
     'master': 'v{version}/league/master',  # Get master tier leagues
-    'champion_list': 'static-data/{region}/v{version}/champion',  # Retrieves champion list
-    'champion_by_id': 'static-data/{region}/v{version}/champion/{id}',  # Retrieve champion by id
-    'item_list': 'static-data/{region}/v{version}/item',  # Retrieve item list
-    'item_by_id': 'static-data/{region}/v{version}/item/{id}',  # Retrieves item by its unique id
-    'language_strings': 'static-data/{region}/v{version}/language-strings',  # Retrieve language string data
-    'supported_languages': 'static-data/{region}/v{version}/languages',  # Retrieve supported languages data
-    'map': 'static-data/{region}/v{version}/map',  # Retrieve map data
-    'mastery': 'static-data/{region}/v{version}/mastery',  # Retrieves mastery list
-    'mastery_by_id': 'static-data/{region}/v{version}/mastery/{id}',  # Retrieves mastery item by id
-    'realm': 'static-data/{region}/v{version}/realm',  # Retrieve realm data
-    'rune': 'static-data/{region}/v{version}/rune',  # Retrieves rune list
-    'rune_by_id': 'static-data/{region}/v{version}/rune/{id}',  # Retrieves rune by its unique id
-    'summoner_spell': 'static-data/{region}/v{version}/summoner-spell',  # Retrieves summoner spell list
-    'summoner_spell_by_id': 'static-data/{region}/v{version}/summoner-spell/{id}',  # Retrieves summoner spell by id
-    'version': 'static-data/{region}/v{version}/versions',  # Retrieve version data
+    'champion_list': 'v{version}/champion',  # Retrieves champion list
+    'champion_by_id': 'v{version}/champion/{id}',  # Retrieve champion by id
+    'item_list': 'v{version}/item',  # Retrieve item list
+    'item_by_id': 'v{version}/item/{id}',  # Retrieves item by its unique id
+    'language_strings': 'v{version}/language-strings',  # Retrieve language string data
+    'supported_languages': 'v{version}/languages',  # Retrieve supported languages data
+    'map': 'v{version}/map',  # Retrieve map data
+    'mastery': 'v{version}/mastery',  # Retrieves mastery list
+    'mastery_by_id': 'v{version}/mastery/{id}',  # Retrieves mastery item by id
+    'realm': 'v{version}/realm',  # Retrieve realm data
+    'rune': 'v{version}/rune',  # Retrieves rune list
+    'rune_by_id': 'v{version}/rune/{id}',  # Retrieves rune by its unique id
+    'summoner_spell': 'v{version}/summoner-spell',  # Retrieves summoner spell list
+    'summoner_spell_by_id': 'v{version}/summoner-spell/{id}',  # Retrieves summoner spell by id
+    'version': 'v{version}/versions',  # Retrieve version data
     'shards': 'shards',  # Get shard list.
     'shard_status': 'shards/{region}',  # Get shard status. Returns data from status.leagueoflegends.com
     'match_by_match_id': 'v{version}/match/{matchId}',  # Retrieve match by match id
