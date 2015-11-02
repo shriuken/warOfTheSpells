@@ -28,14 +28,14 @@ def main ():
     """for each in a['data']['Kassadin']['spells'][3]:
         print each
         print a['data']['Kassadin']['spells'][3][each]"""
-    for each in a['data']['Shaco']['spells'][0]:
+    """for each in a['data']['Shaco']['spells'][0]:
         print each
-        print a['data']['Shaco']['spells'][0][each]
-    """spells = []
+        print a['data']['Shaco']['spells'][0][each]"""
+
+    print a['data']['Shaco']['spells'][0].get('vars')
+    spells = []
     x = 0
     for what in keys:
-        print x
-        print what
         spellQ = Spell.Spell()
         spellW = Spell.Spell()
         spellE = Spell.Spell()
@@ -48,7 +48,6 @@ def main ():
         spells.append(spellW)
         spells.append(spellE)
         spells.append(spellR)
-        x = x+1"""
 
 #    print spells[0]
 
