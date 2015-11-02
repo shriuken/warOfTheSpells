@@ -1,5 +1,5 @@
 #user specific file
-league_gen_py/key.py
+key.py
 
 #generated files
 *.pyc

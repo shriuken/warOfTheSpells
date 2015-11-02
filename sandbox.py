@@ -2,18 +2,7 @@ __author__ = 'ryan'
 import copy
 import riot_api_wrapper.RiotAPI as API
 import key as KEY
-
-
-"""class dummy:
-    def __init__(self):
-        self.test = 1
-        self.test1 = 2
-
-    def setTest(self, int):
-        self.test = int
-
-    def getTest1(self):
-        return self.test"""
+import spell as Spell
 
 def main ():
     api = API.RiotAPI(KEY.KEY)
@@ -23,11 +12,11 @@ def main ():
     # print a['data']['Leblanc']
     x = 0
     keys = []
-    for key in a['data'].iteritems(): # Get the list of keys from the API list of spells. Keys are essentially champ names.
-        keys.append(key)
-        x = x+1
-    for each in keys:
-        print each[0]
+    for pairs in a['data'].iteritems(): # Get the list of keys from the API list of spells. Keys are essentially champ names.
+        keys.append(pairs[0])
+    """for each in keys:
+        print each
+    print len(keys)"""
     # print(api.get_champion_list('spells'))
     """print "Number of keys: ", len(keys)
     print type(keys) # list
@@ -36,17 +25,43 @@ def main ():
     print type(a['data']['MonkeyKing']['spells']) #list
     print len(a['data']['MonkeyKing']['spells']) #list with 4 things. all related to wukong.
     print type(a['data']['MonkeyKing']['spells'][0]) # a dictionary """
-    for each in a['data']['FiddleSticks']['spells'][0]:
+    """for each in a['data']['Kassadin']['spells'][3]:
         print each
-        print a['data']['FiddleSticks']['spells'][3][each]
+        print a['data']['Kassadin']['spells'][3][each]"""
+    for each in a['data']['Shaco']['spells'][0]:
+        print each
+        print a['data']['Shaco']['spells'][0][each]
+    """spells = []
+    x = 0
+    for what in keys:
+        print x
+        print what
+        spellQ = Spell.Spell()
+        spellW = Spell.Spell()
+        spellE = Spell.Spell()
+        spellR = Spell.Spell()
+        spellQ.init_from_riot_api(a['data'][what]['spells'][0])
+        spellW.init_from_riot_api(a['data'][what]['spells'][1])
+        spellE.init_from_riot_api(a['data'][what]['spells'][2])
+        spellR.init_from_riot_api(a['data'][what]['spells'][3])
+        spells.append(spellQ)
+        spells.append(spellW)
+        spells.append(spellE)
+        spells.append(spellR)
+        x = x+1"""
+
+#    print spells[0]
+
+    # print a['data']['FiddleSticks']['spells']
 
     """print a['data']['MonkeyKing']['spells'][0]['sanitizedDescription']
     print a['data']['MonkeyKing']['spells'][0]['sanitizedTooltip']
     print a['data']['MonkeyKing']['spells'][0]['effect']"""
 
-    """print type(a['data']['MonkeyKing']['spells'][3]['vars'])
+    """ print type(a['data']['MonkeyKing']['spells'][3]['vars'])
     print len(a['data']['MonkeyKing']['spells'][0]['vars'])
-    print a['data']['MonkeyKing']['spells'][0]['vars'][0] """
+    print a['data']['MonkeyKing']['spells'][0]['vars'][0]
+    print type(a['data']['MonkeyKing']['spells'][0])"""
     #print a['data']['MonkeyKing']['spells'][3]['effect']
     #print a['data']['MonkeyKing']['spells'][3]['effect'][0]
     #print a['data']['MonkeyKing']['spells'][3]['effect'][1]
