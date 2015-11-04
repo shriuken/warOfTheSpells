@@ -32,8 +32,11 @@ def main ():
         print each
         print a['data']['Shaco']['spells'][0][each]"""
 
-    print a['data']['Shaco']['spells'][0].get('vars')
-    spells = []
+    print a['data']['Rengar']['spells'][0]
+    print a['data']['Rengar']['spells'][1].get('cooldown')
+    print a['data']['Rengar']['spells'][2].get('cooldown')
+    print a['data']['Rengar']['spells'][3].get('cooldown')
+    """spells = []
     x = 0
     for what in keys:
         spellQ = Spell.Spell()
@@ -51,7 +54,7 @@ def main ():
 
 #    print spells[0]
 
-    # print a['data']['FiddleSticks']['spells']
+    # print a['data']['FiddleSticks']['spells']"""
 
     """print a['data']['MonkeyKing']['spells'][0]['sanitizedDescription']
     print a['data']['MonkeyKing']['spells'][0]['sanitizedTooltip']
