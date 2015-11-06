@@ -13,8 +13,8 @@ def get_most_efficient(spellData, stats, spellDataKeys):
     """
     ret = ['', -1, [], [], {}, [], []]
     for champ in spellDataKeys:
-        #if champ == "Rengar" or champ == "Rumble" or champ == "Vi":
-        #    continue
+        if champ == "Teemo" or champ == "Aatrox" or champ == "Rengar": # or champ == "Rumble" or champ == "Vi":
+            continue
         for x in range(0, 4):
             currentSpell = Spell.Spell()
             currentSpell.init_from_riot_api(spellData['data'][champ]['spells'][x])
@@ -61,22 +61,23 @@ def main():
 
     stats = create_basic_stats_package(keys, spellData['data'])
 
-    currentSpell = Spell.Spell()
-    currentSpell.init_from_riot_api(spellData['data']['Jax']['spells'][3])
+    #currentSpell = Spell.Spell()
+    #currentSpell.init_from_riot_api(spellData['data']['Jax']['spells'][3])
     #print currentSpell.get_efficiency(stats)
 
 
     ret = get_most_efficient(spellData, stats, keys)
+    print ret[0]
     #print 'calculated:', ret[2]
-    print 'total calculated:', len(ret[2])
+    #print 'total calculated:', len(ret[2])
     #print ret[5]
     #print 'not calculated:', ret[3]
-    for each in ret[3]:
-        print each
-    print 'total not calculated:', len(ret[3])
+    #for each in ret[3]:
+    #    print each
+    # print 'total not calculated:', len(ret[3])
     # print ret[4]
     lastPrint = ''
-    x = 0
+    #x = 0
     #for each in ret[6]:
     #    print each
     #print ret[6]

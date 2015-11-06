@@ -63,8 +63,6 @@ class Spell:
                     if self.effect[index] is not None:
                         values['e' + str(index)] = self.effect[index][rank]
 
-            # print 'finished splitting things up'
-
             #https://regex101.com/r/mF9dL8/16
             damageExpression = '(suffering|dealing|deals|deal|for|take|additional|takes) (?={{ [a-z])(?P<formula>.+?) (physical|magic|true|bonus) (?=damage)'
 
@@ -106,27 +104,19 @@ class Spell:
                     formula = re.search(damageExpression, splitTip, re.IGNORECASE).group('formula')
                 elif re.search(healExpression, splitTip, re.IGNORECASE) is not None:
                     formula = re.search(healExpression, splitTip, re.IGNORECASE).group('formula')
-                # print formula
 
                 splitFormula = re.split(operandExpression, formula, 0, re.IGNORECASE)
-
-                # print splitFormula
 
                 # Huge assumption; Assuming that the first element is always base damage (and thus has no scaling).
                 tickDamage = values.get(re.search(keyExpression, splitFormula[0]).group(1))
                 if tickDamage is None:
                     tickDamage = 0
-                #print self.spellName, tickDamage, re.search(keyExpression, splitFormula[0]).group(1)
 
                 # calculate damage of 1 tick.
                 for x in range(1, len(splitFormula), 2):
                     # print splitFormula
                     if splitFormula[x] == '+':
                         token = re.search(keyExpression, splitFormula[x+1]).group(1)
-                        #print token
-                        #print values
-                        #print scaleType
-                        #print tickDamage
                         if values.get(token) is not None and scaleType.get(token) is not None:
                             tickDamage = tickDamage + values.get(token) * statsPackage.get(scaleType.get(token))
             except:
