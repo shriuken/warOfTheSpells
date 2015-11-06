@@ -63,8 +63,7 @@ def mixed_evaluation(keys, spellData, rank=0):
     print ''
     print ''
     for pair in bestCount:
-        print pair[0], ':', pair[1]
-
+        print pair
 
 def main():
     """
