@@ -172,8 +172,8 @@ def mixed_evaluation(keys, spellData, rank=0):
     :param rank: the spell rank to evaluate.
     """
     bestCount = {}
-    for ad in range(0, 501):
-        for ap in range(0, 801):
+    for ad in range(0, 501, 25):
+        for ap in range(0, 801, 25):
             for cdr in range(0, 41):
                 stats = createStats(ad, ap, cdr * .01)
                 newBest = get_most_efficient(spellData, stats, keys)

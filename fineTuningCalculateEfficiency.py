@@ -63,20 +63,22 @@ def main():
 
     currentSpell = Spell.Spell()
     currentSpell.init_from_riot_api(spellData['data']['Jax']['spells'][3])
-    print currentSpell.get_efficiency(stats)
+    #print currentSpell.get_efficiency(stats)
 
 
     ret = get_most_efficient(spellData, stats, keys)
-    print 'calculated:', ret[2]
-    print 'total:', len(ret[2])
-    print ret[5]
-    print 'not calculated:', ret[3]
-    print 'total:', len(ret[3])
-    print ret[4]
+    #print 'calculated:', ret[2]
+    print 'total calculated:', len(ret[2])
+    #print ret[5]
+    #print 'not calculated:', ret[3]
+    for each in ret[3]:
+        print each
+    print 'total not calculated:', len(ret[3])
+    # print ret[4]
     lastPrint = ''
     x = 0
-    for each in ret[6]:
-        print each
+    #for each in ret[6]:
+    #    print each
     #print ret[6]
 
 

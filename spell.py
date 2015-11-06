@@ -57,11 +57,20 @@ class Spell:
 
                 scaleType[each['key']] = each['link']
 
-            for index in range(1, len(self.effect)):
-                values['e' + str(index)] = self.effect[index][rank]
+            if self.effect is not None:  # In case effect isn't returning properly. (*cough* Lux *cough*)
+                #print 'split self.effect'
+                for index in range(1, len(self.effect)):
+                    if self.effect[index] is not None:
+                        values['e' + str(index)] = self.effect[index][rank]
 
-            # https://regex101.com/r/mF9dL8/9
-            damageExpression = '(suffering|dealing|deals|deal|for|take|additional) (?={)(?P<formula>.+?) (physical|magic|true|bonus) (?=damage)'
+            # print 'finished splitting things up'
+
+            #https://regex101.com/r/mF9dL8/16
+            damageExpression = '(suffering|dealing|deals|deal|for|take|additional|takes) (?={{ [a-z])(?P<formula>.+?) (physical|magic|true|bonus) (?=damage)'
+
+            #https://regex101.com/r/jW2vQ3/2
+            healExpression = '(regaining|restores|offers|restoring|for) (?={{ [a-z])(?P<formula>.+?) (health)'
+
             # https://regex101.com/r/qS8gJ6/2
             keyExpression = '{{ ([a-z]\d) }}'  # Use this pattern when searching for e1, f1, etc.
             # https://regex101.com/r/sC7bI5/1
@@ -75,36 +84,50 @@ class Spell:
             # ticks, since the spell can be activated up to 3 times sequentially. This calculation does not take into
             # account how many ticks occur over the entire duration of a spell; rather, this calculates the damage of
             # one 'tick'; thus spells that deal all their damage in one tick will return a higher efficiency.
-
             tickDamage = 0
+
+            # print 'Splitting up tooltip to figure out formulas for damage.'
 
             try:
                 # First, check to see if the spell has Passive/Active components. If they do, split by the Active, and
                 # take the last entry of the split. Else, use the entirety of the tooltip.
                 splitTip = ''
 
+                #print re.split(activeExpression, self.sanitizedTooltip)
+
                 if len(re.split(activeExpression, self.sanitizedTooltip)) > 1:
                     splitTip = re.split(activeExpression, self.sanitizedTooltip, 0, re.IGNORECASE)[-1]
                 else:
                     splitTip = self.sanitizedTooltip
 
-                #print splitTip
                 # Gets damage formula. Assumes that the formula is in the tool tip following the regular expression
                 # in the damage expression. Currently, this is extremely limiting.
-                formula = re.search(damageExpression, splitTip, re.IGNORECASE).group('formula')
-                #print formula
+                if re.search(damageExpression, splitTip, re.IGNORECASE) is not None:
+                    formula = re.search(damageExpression, splitTip, re.IGNORECASE).group('formula')
+                elif re.search(healExpression, splitTip, re.IGNORECASE) is not None:
+                    formula = re.search(healExpression, splitTip, re.IGNORECASE).group('formula')
+                # print formula
+
                 splitFormula = re.split(operandExpression, formula, 0, re.IGNORECASE)
-                #print splitFormula
+
+                # print splitFormula
 
                 # Huge assumption; Assuming that the first element is always base damage (and thus has no scaling).
                 tickDamage = values.get(re.search(keyExpression, splitFormula[0]).group(1))
+                if tickDamage is None:
+                    tickDamage = 0
                 #print self.spellName, tickDamage, re.search(keyExpression, splitFormula[0]).group(1)
 
                 # calculate damage of 1 tick.
                 for x in range(1, len(splitFormula), 2):
+                    # print splitFormula
                     if splitFormula[x] == '+':
                         token = re.search(keyExpression, splitFormula[x+1]).group(1)
-                        if scaleType.get(token) is not None and scaleType.get(token) is not None:
+                        #print token
+                        #print values
+                        #print scaleType
+                        #print tickDamage
+                        if values.get(token) is not None and scaleType.get(token) is not None:
                             tickDamage = tickDamage + values.get(token) * statsPackage.get(scaleType.get(token))
             except:
                 #print "first exception."

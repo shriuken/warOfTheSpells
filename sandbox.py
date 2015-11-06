@@ -32,10 +32,23 @@ def main ():
         print each
         print a['data']['Shaco']['spells'][0][each]"""
 
-    print a['data']['Rengar']['spells'][0]
-    print a['data']['Rengar']['spells'][1].get('cooldown')
-    print a['data']['Rengar']['spells'][2].get('cooldown')
-    print a['data']['Rengar']['spells'][3].get('cooldown')
+    #print a['data']['Xerath']['spells'][2].get('sanitizedTooltip')
+    print a['data']['Soraka']['spells'][1].get('sanitizedTooltip')  #.get('cooldown')
+    #print a['data']['Lux']['spells'][2].get('sanitizedTooltip')  #.get('cooldown')
+    #print a['data']['Lux']['spells'][3].get('sanitizedTooltip')  #.get('cooldown')
+
+    stats = {}
+    for champ in keys:
+        for x in range(0, 4):
+            if a['data'][champ]['spells'][x].get('vars') is not None:
+                for sublist in a['data'][champ]['spells'][x]['vars']:
+                    if sublist['link'][0] != '@' and sublist['link'][0] != '.':
+                        stats[sublist['link']] = 100
+    stats['cdr'] = 0.10
+
+    LuxQ = Spell.Spell()
+    LuxQ.init_from_riot_api(a['data']['Soraka']['spells'][1])
+    print LuxQ.get_efficiency(stats)
     """spells = []
     x = 0
     for what in keys:
